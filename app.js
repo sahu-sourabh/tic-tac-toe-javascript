@@ -29,6 +29,7 @@ function addTurn(element) {
 }
 
 function checkScore() {
+    let draw = false;
     const allSquares = document.querySelectorAll(".square");
     // console.log(allSquares);
 
@@ -45,6 +46,7 @@ function checkScore() {
         if(circleWins) {
             infoDisplay.textContent = "Circle Wins!";
             allSquares.forEach(square => square.replaceWith(square.cloneNode(true)));
+            draw = true;
             return;
         }
     })
@@ -55,7 +57,12 @@ function checkScore() {
         if(crossWins) {
             infoDisplay.textContent = "Cross Wins!";
             allSquares.forEach(square => square.replaceWith(square.cloneNode(true)));
+            draw = true;
             return;
         }
     })
+
+    if(draw) {
+        infoDisplay.textContent = "It's a draw!!!"
+    }
 }
